@@ -9,7 +9,7 @@ const { sendMatchEmail } = require('./email');
 
 const app = express();
 
-const allowedOrigins = ['https://pickparty.net', 'https://www.pickparty.net/', 'http://localhost:3000'];
+const allowedOrigins = ['https://pickparty.net', 'https://www.pickparty.net', 'http://localhost:3000'];
 
 // Middleware
 app.use(express.json());
