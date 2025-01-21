@@ -5,13 +5,18 @@ const cron = require('node-cron');
 const pickRoutes = require('./routes/picks');
 const Pick = require('./models/Pick');
 const cors = require('cors');
+const allowedOrigins = ['https://pickparty.net', 'http://localhost:3000'];
 const { sendMatchEmail } = require('./email');
 
 const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins, // Allow only requests from the specified domain
+  methods: ['GET', 'POST'], // Adjust methods as needed
+  credentials: true,
+}));
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
