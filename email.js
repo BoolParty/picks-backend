@@ -17,9 +17,9 @@ const sendMatchEmail = (userEmail, pick) => {
     to: userEmail, // Send to the user's email
     subject: 'Your Pick Has Been Matched!',
     html: `
-        <h1>Your [ ${pick.team} ] pick is officially placed!</h1>
-        <p>Log in to see who you're dueling with and further details.</p>
-        <p>Good luck!</p>
+        <h1>Your [${pick.team} ${pick.spread}] pick has been matched for $${pick.matchedWager} with ${pick.matchedUserEmail}!</h1>
+        <p>Log in to see all your Matched and Unmatched Picks in one place.</p>
+        <p>Godspeed good sir!</p>
     `,
 };
 
