@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const cron = require('node-cron');
 const pickRoutes = require('./routes/picks');
 const Pick = require('./models/Pick');
+const processResults = require('./scripts/processResults');
+const resultRoutes = require('./routes/results');
 const cors = require('cors');
 const { sendMatchEmail } = require('./email');
 
@@ -26,6 +28,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use('/api/picks', pickRoutes);
+app.use('/api/results', resultRoutes);
 
 // Pairing Script (runs every minute)
 cron.schedule('*/1 * * * *', async () => {
@@ -137,6 +140,12 @@ cron.schedule('*/1 * * * *', async () => {
   } catch (err) {
     console.error('Error running pairing script:', err);
   }
+});
+
+// Schedule the results processing script to run every hour
+cron.schedule('*/5 * * * *', () => {
+  console.log('Running results processing...');
+  processResults();
 });
 
 // Catch-all route for React

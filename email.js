@@ -19,7 +19,7 @@ const sendMatchEmail = (userEmail, pick) => {
     html: `
         <h1>Your [${pick.team} ${pick.spread}] pick has been matched for $${pick.matchedWager} with ${pick.matchedUserEmail}!</h1>
         <p>Log in to see all your Matched and Unmatched Picks in one place.</p>
-        <p>Godspeed good sir!</p>
+        <p>Godspeed!</p>
     `,
 };
 
