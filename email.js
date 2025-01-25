@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 // Function to send email
 const sendMatchEmail = (userEmail, pick) => {
   const mailOptions = {
-    from: 'nflpoolparty7@gmail.com',
+    from: '"Pick Party" <nflpoolparty7@gmail.com>',
     to: userEmail, // Send to the user's email
     subject: 'Your Pick Has Been Matched!',
     html: `
