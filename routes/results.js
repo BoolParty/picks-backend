@@ -8,7 +8,7 @@ router.get('/:userId', async (req, res) => {
     const { userId } = req.params;
 
     // Fetch results from the database for the given user
-    const results = await Results.find({ userId });
+    const results = await Result.find({ userId });
 
     if (!results.length) {
       return res.status(200).json([]); // Return an empty array if no results
