@@ -2,13 +2,13 @@ const express = require('express');
 const Result = require('../models/Result'); // Import the Result model
 const router = express.Router();
 
-// GET /api/result/:userId - Fetch results for a specific user
-router.get('/:userId', async (req, res) => {
+// GET /api/results/:userEmail - Fetch results for a specific user
+router.get('/:userEmail', async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { userEmail } = req.params;
 
     // Fetch results from the database for the given user
-    const results = await Result.find({ userId });
+    const results = await Result.find({ user: userEmail });
 
     if (!results.length) {
       return res.status(200).json([]); // Return an empty array if no results
